@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { StepContext } from "../context";
+import { InfoContext, StepContext } from "../context";
 
 const StepOne = () => {
   const { step, setStep } = useContext(StepContext);
+  const { info, setInfo } = useContext(InfoContext);
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -14,7 +15,7 @@ const StepOne = () => {
 
   const formHandler = (): void => {
     if (!formValidation()) return;
-    console.log("Enviado com sucesso!");
+    setInfo({ ...info, name: name, email: email, phone: phone });
     setStep(2);
   };
 

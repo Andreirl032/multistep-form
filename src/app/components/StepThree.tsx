@@ -1,21 +1,21 @@
 import { useContext } from "react";
 import { InfoContext, StepContext } from "../context";
 
-const StepTwo = () => {
+const StepThree = () => {
   const { step, setStep } = useContext(StepContext);
     const { info, setInfo } = useContext(InfoContext);
 
     const formHandler = (): void => {
       // if (!formValidation()) return;
       // setInfo({ ...info, name: name, email: email, phone: phone });
-      setStep(3);
+      setStep(4);
     };
 
   return (
     <div className="px-16 pt-10">
       <div className="flex mb-7 gap-1 flex-col">
         <h1 className="text-3xl font-bold text-blue-950">
-          Personal InfoOIEEEE
+          Personal PASSO 3 PARÇA
         </h1>
         <h5 className="text-gray-500">
           Please provide your name, e-mail address, and phone number.
@@ -66,4 +66,4 @@ const StepTwo = () => {
     </div>
   );
 };
-export default StepTwo;
+export default StepThree;

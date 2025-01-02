@@ -5,6 +5,9 @@ import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
 import { StepContext } from "./context";
 import Sidebar from "./components/Sidebar";
+import StepThree from "./components/StepThree";
+import StepFour from "./components/StepFour";
+import StepFive from "./components/StepFive";
 
 interface StepContextInterface {
   step: number;
@@ -20,6 +23,14 @@ export default function Home() {
         return <StepOne />;
       case 2:
         return <StepTwo />;
+      case 3:
+        return <StepThree />;
+      case 4:
+        return <StepFour />;
+      case 5:
+        return <StepFive />;
+      default:
+        return <StepOne />;
     }
   };
 
