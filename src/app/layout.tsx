@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,7 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ubuntuBold = localFont({src:'../../fonts/Ubuntu-Bold.tff'})
+const ubuntuFonts = localFont({
+  src: [
+    { path: "../../fonts/Ubuntu-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../../fonts/Ubuntu-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../../fonts/Ubuntu-Regular.ttf", weight: "400", style: "normal" },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,11 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${ubuntuFonts.className} antialiased`}>{children}</body>
     </html>
   );
 }

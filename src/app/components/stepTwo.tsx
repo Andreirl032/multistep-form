@@ -1,9 +1,4 @@
-import { useContext } from "react";
-import { StepContext } from "../context";
-
-const StepOne = () => {
-  const { step, setStep } = useContext(StepContext);
-
+const StepTwo = () => {
   const formHandler = () => {
     console.log("oiee");
   };
@@ -11,7 +6,9 @@ const StepOne = () => {
   return (
     <div className="px-16 pt-10">
       <div className="flex mb-7 gap-1 flex-col">
-        <h1 className="text-3xl font-bold text-blue-950">Personal Info</h1>
+        <h1 className="text-3xl font-bold text-blue-950">
+          Personal InfoOIEEEE
+        </h1>
         <h5 className="text-gray-500">
           Please provide your name, e-mail address, and phone number.
         </h5>
@@ -52,8 +49,7 @@ const StepOne = () => {
         </div>
 
         <button
-          onClick={() => setStep(2)}
-          type="button"
+          type="submit"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
           Next step
@@ -62,4 +58,4 @@ const StepOne = () => {
     </div>
   );
 };
-export default StepOne;
+export default StepTwo;
