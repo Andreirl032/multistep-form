@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import sidebar from "../../assets/images/bg-sidebar-desktop.svg";
 import { Context, useContext, useState } from "react";
-import StepOne from "./components/stepOne";
-import StepTwo from "./components/stepTwo";
+import StepOne from "./components/StepOne";
+import StepTwo from "./components/StepTwo";
 import { StepContext } from "./context";
+import Sidebar from "./components/Sidebar";
 
 interface StepContextInterface {
   step: number;
@@ -29,7 +28,7 @@ export default function Home() {
       <div className="bg-slate-200 size-full absolute flex justify-center items-center">
         <div className="bg-slate-50 rounded-md flex flex-row p-3">
           <div>
-            <Image priority src={sidebar} alt="sidebar" />
+            <Sidebar />
           </div>
           <div>{pageHandler(step)}</div>
         </div>

@@ -15,6 +15,7 @@ const StepOne = () => {
   const formHandler = (): void => {
     if (!formValidation()) return;
     console.log("Enviado com sucesso!");
+    setStep(2);
   };
 
   const formValidation = (): boolean => {
