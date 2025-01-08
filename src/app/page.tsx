@@ -3,19 +3,29 @@
 import { Context, useContext, useState } from "react";
 import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
-import { StepContext } from "./context";
+import { InfoContext, StepContext } from "./context";
 import Sidebar from "./components/Sidebar";
 import StepThree from "./components/StepThree";
 import StepFour from "./components/StepFour";
 import StepFive from "./components/StepFive";
 
-interface StepContextInterface {
-  step: number;
-  setStep: (s: number) => void;
+interface InfoInterface {
+  name: string;
+  email: string;
+  phone: string;
+  plan: { title: string; frequency: string; value: number };
+  addOns: { title: string; frequency: string; value: number }[];
 }
 
 export default function Home() {
   const [step, setStep] = useState<number>(1);
+  const [info, setInfo] = useState<InfoInterface>({
+    name: "",
+    email: "",
+    phone: "",
+    plan: { title: "", frequency: "", value: 0 },
+    addOns: [],
+  });
 
   const pageHandler = (step: number) => {
     switch (step) {
@@ -41,7 +51,9 @@ export default function Home() {
           <div>
             <Sidebar />
           </div>
-          <div>{pageHandler(step)}</div>
+          <InfoContext.Provider value={{info,setInfo}}>
+            <div>{pageHandler(step)}</div>
+            </InfoContext.Provider>
         </div>
       </div>
     </StepContext.Provider>

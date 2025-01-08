@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { InfoContext, StepContext } from "../context";
 
 const StepTwo = () => {
@@ -11,14 +11,20 @@ const StepTwo = () => {
       setStep(3);
     };
 
+    const goBackStep = (): void => {
+      if(step>1){
+        setStep(step-1);
+      }
+    }
+
   return (
     <div className="px-16 pt-10">
       <div className="flex mb-7 gap-1 flex-col">
         <h1 className="text-3xl font-bold text-blue-950">
-          Personal InfoOIEEEE
+          Select your plan
         </h1>
         <h5 className="text-gray-500">
-          Please provide your name, e-mail address, and phone number.
+          You have the option of monthly or year billing. 
         </h5>
       </div>
 
@@ -56,12 +62,15 @@ const StepTwo = () => {
           />
         </div>
 
+        <div className="flex flex-row justify-between">
+        <button onClick={()=>goBackStep()} type="button" className="mt-auto whitespace-nowrap inline bg-transparent text-gray-500 rounded-lg w-min py-3 hover:text-blue-950">Go Back</button>
         <button
-          type="submit"
+          type="button"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
-          Next step
+          Next Step
         </button>
+        </div>
       </form>
     </div>
   );

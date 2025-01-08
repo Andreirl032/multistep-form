@@ -39,6 +39,12 @@ const StepOne = () => {
   const isEmail = (email: string) =>
     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
+  useEffect(()=>{
+    setName(info?.name);
+    setEmail(info?.email);
+    setPhone(info?.phone);
+  },[])
+
   return (
     <div className="px-16 pt-10">
       <div className="flex mb-7 gap-1 flex-col">
@@ -68,6 +74,7 @@ const StepOne = () => {
               setName(e.target.value);
               setNameError("");
             }}
+            value={name}
           />
         </div>
 
@@ -89,6 +96,7 @@ const StepOne = () => {
             onChange={(e) => {
               setEmail(e.target.value), setEmailError("");
             }}
+            value={email}
           />
         </div>
 
@@ -112,6 +120,7 @@ const StepOne = () => {
             onChange={(e) => {
               setPhone(e.target.value), setPhoneError("");
             }}
+            value={phone}
           />
         </div>
 
@@ -120,7 +129,7 @@ const StepOne = () => {
           type="button"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
-          Next step
+          Next Step
         </button>
       </form>
     </div>

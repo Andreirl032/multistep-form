@@ -60,7 +60,7 @@ const StepFour = () => {
           type="submit"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
-          Next step
+          Next Step
         </button>
       </form>
     </div>
