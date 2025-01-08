@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <StepContext.Provider value={{ step, setStep }}>
       <div className="bg-slate-200 size-full absolute flex justify-center items-center">
-        <div className="bg-slate-50 rounded-md flex flex-row p-3">
+        <div className="bg-slate-50 rounded-md flex flex-row p-3 w-[55rem] h-[37rem]">
           <div>
             <Sidebar />
           </div>
