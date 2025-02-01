@@ -5,6 +5,12 @@ const StepThree = () => {
   const { step, setStep } = useContext(StepContext);
     const { info, setInfo } = useContext(InfoContext);
 
+    const goBackStep = (): void => {
+      if (step > 1) {
+        setStep(step - 1);
+      }
+    };
+
     const formHandler = (): void => {
       // if (!formValidation()) return;
       // setInfo({ ...info, name: name, email: email, phone: phone });
@@ -55,13 +61,15 @@ const StepThree = () => {
             className="border-gray-300 border-solid border-2 outline-none rounded-md px-2 py-2 focus:border-blue-900"
           />
         </div>
-
+        <div className="flex flex-row justify-between">
+        <button onClick={()=>goBackStep()} type="button" className="mt-auto whitespace-nowrap inline bg-transparent text-gray-500 rounded-lg w-min py-3 hover:text-blue-950">Go Back</button>
         <button
-          type="submit"
+          type="button"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
           Next Step
         </button>
+        </div>
       </form>
     </div>
   );
