@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
+type planName = "" | "arcade" | "advanced" | "pro";
+
 interface StepContextInterface {
   step: number;
   setStep: (c: number) => void;
@@ -9,7 +11,7 @@ interface InfoInterface {
   name: string;
   email: string;
   phone: string;
-  plan: { title: string; frequency: string; value: number };
+  plan: { title: planName; frequency: string; value: number };
   addOns: { title: string; frequency: string; value: number }[];
 }
 
