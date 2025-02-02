@@ -65,7 +65,7 @@ const StepTwo = () => {
     // if (!formValidation()) return;
     // setInfo({ ...info, name: name, email: email, phone: phone });
     const prevAddOns = info.addOns;
-    console.log(Array.isArray(prevAddOns));
+    // console.log(Array.isArray(prevAddOns));
     setInfo({
       ...info,
       plan: {

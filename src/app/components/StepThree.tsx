@@ -15,7 +15,7 @@ const StepThree = () => {
     return false;
   };
 
-  console.warn(info.addOns);
+  // console.warn(info.addOns);
 
   const [isChecked1, setIsChecked1] = useState(searchAddOn("Online service"));
   const [isChecked2, setIsChecked2] = useState(searchAddOn("Larger storage"));
