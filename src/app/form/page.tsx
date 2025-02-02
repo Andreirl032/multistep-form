@@ -1,6 +1,6 @@
 "use client";
 
-import { Context, useContext, useState } from "react";
+import { Context, useContext, useEffect, useState } from "react";
 import StepOne from "../components/StepOne";
 import StepTwo from "../components/StepTwo";
 import { InfoContext, StepContext } from "../context";
@@ -26,6 +26,40 @@ export default function Home() {
     plan: { title: "", frequency: "", value: 0 },
     addOns: [],
   });
+  const [register,setRegister] = useState<any>();
+
+  const fetchRegister = async () => {
+    const res = await fetch("/api/registers");
+    const registers = await res.json();
+
+    const nome="andrei"
+    const emali="a@b.com"
+    const fone="989"
+    const plano="infalível"
+
+    let test = await fetch("/api/postRegister",{
+      cache: 'no-store',
+      method: 'POST',
+      headers: undefined,
+      body: JSON.stringify({name:nome,email:emali,phone:fone,plan:plano})
+    });
+    test = await test.json()
+    console.log(test);
+
+
+
+    return registers;
+  }
+
+  useEffect(()=>{
+    fetchRegister().then((register)=>{
+      setRegister(register);
+    })
+  },[])
+
+  // useEffect(()=>{
+  //   console.log(register);
+  // },[])
 
   const pageHandler = (step: number) => {
     switch (step) {
