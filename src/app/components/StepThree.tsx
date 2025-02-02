@@ -165,8 +165,6 @@ const StepThree = () => {
         >
           <div className="flex flex-row gap-2">
             <Checkbox
-              id="1"
-              label=""
               checked={isChecked1}
               handleChange={handleCheckboxChange1}
             />
@@ -190,8 +188,6 @@ const StepThree = () => {
         >
           <div className="flex flex-row gap-2">
             <Checkbox
-              id="2"
-              label=""
               checked={isChecked2}
               handleChange={handleCheckboxChange2}
             />
@@ -213,8 +209,6 @@ const StepThree = () => {
         >
           <div className="flex flex-row gap-2">
             <Checkbox
-              id="3"
-              label=""
               checked={isChecked3}
               handleChange={handleCheckboxChange3}
             />
