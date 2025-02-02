@@ -1,61 +1,89 @@
 "use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-import { Context, useContext, useState } from "react";
-import StepOne from "./components/StepOne";
-import StepTwo from "./components/StepTwo";
-import { InfoContext, StepContext } from "./context";
-import Sidebar from "./components/Sidebar";
-import StepThree from "./components/StepThree";
-import StepFour from "./components/StepFour";
-import StepFive from "./components/StepFive";
+export default function Start() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-interface InfoInterface {
-  name: string;
-  email: string;
-  phone: string;
-  plan: { title: string; frequency: string; value: number };
-  addOns: { title: string; frequency: string; value: number }[];
-}
-
-export default function Home() {
-  const [step, setStep] = useState<number>(1);
-  const [info, setInfo] = useState<InfoInterface>({
-    name: "",
-    email: "",
-    phone: "",
-    plan: { title: "", frequency: "", value: 0 },
-    addOns: [],
-  });
-
-  const pageHandler = (step: number) => {
-    switch (step) {
-      case 1:
-        return <StepOne />;
-      case 2:
-        return <StepTwo />;
-      case 3:
-        return <StepThree />;
-      case 4:
-        return <StepFour />;
-      case 5:
-        return <StepFive />;
-      default:
-        return <StepOne />;
+  const formHandler = (): void => {
+    if (!formValidation()) {
+      return;
     }
+    //console.warn("pass");
   };
 
+  const formValidation = (): boolean => {
+    if (!isEmail(email)) {
+      setEmailError("Invalid e-mail");
+    }
+
+    if (!email.trim()) {
+      setEmailError("This field is required");
+    }
+    return !!email.trim() && isEmail(email);
+  };
+
+  const isEmail = (email: string) =>
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+
   return (
-    <StepContext.Provider value={{ step, setStep }}>
-      <div className="bg-slate-200 size-full absolute flex justify-center items-center">
-        <div className="bg-slate-50 rounded-md flex flex-row p-3 w-[55rem] h-[37rem]">
-          <div>
-            <Sidebar />
+    <div className="bg-slate-200 size-full absolute flex justify-center items-center">
+      <div className="bg-slate-50 rounded-md p-16 w-[55rem] h-[37rem] flex flex-col gap-20">
+        <div className="flex flex-col items-center">
+          <h1 className="text-6xl text-blue-900 font-bold">Tech service</h1>
+          <h2 className="text-xl text-gray-700 font-medium">
+            Your best experience
+          </h2>
+        </div>
+
+        <form className="flex flex-col gap-3 items-center">
+          <div className="flex flex-col gap-1 w-1/2">
+            <div className="flex justify-between">
+              <label className="text-blue-950" htmlFor="email">
+                Insert your e-mail to update your information:
+              </label>
+              <label className="text-red-600 font-bold" htmlFor="email">
+                {emailError}
+              </label>
+            </div>
+            <input
+              type="email"
+              name="email"
+              className={`${
+                emailError === "" ? "border-gray-300" : "border-red-600"
+              } border-solid border-2 outline-none rounded-md px-2 py-2 focus:border-blue-900`}
+              onChange={(e) => {
+                setEmail(e.target.value), setEmailError("");
+              }}
+              value={email}
+            />
           </div>
-          <InfoContext.Provider value={{info,setInfo}}>
-            <div>{pageHandler(step)}</div>
-            </InfoContext.Provider>
+          <div>
+            <button
+              onClick={() => formHandler()}
+              type="button"
+              className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
+            >
+              Next Step
+            </button>
+          </div>
+        </form>
+
+        <div>
+          <h1 className="text-xl">
+            Doesn´t have infomation registered?{" "}
+            {
+              <Link className="text-blue-600 underline" href={"/form"}>
+                Sign in
+              </Link>
+            }{" "}
+            now!
+          </h1>
         </div>
       </div>
-    </StepContext.Provider>
+    </div>
   );
 }
