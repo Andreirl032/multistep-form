@@ -6,9 +6,22 @@ const StepThree = () => {
   const { step, setStep } = useContext(StepContext);
   const { info, setInfo } = useContext(InfoContext);
 
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
+  const searchAddOn = (searchTitle: string) => {
+    for (let element of info.addOns) {
+      if (element.title === searchTitle) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  console.warn(info.addOns);
+
+  const [isChecked1, setIsChecked1] = useState(searchAddOn("Online service"));
+  const [isChecked2, setIsChecked2] = useState(searchAddOn("Larger storage"));
+  const [isChecked3, setIsChecked3] = useState(
+    searchAddOn("Customizable profile")
+  );
 
   const handleCheckboxChange1: React.ChangeEventHandler<HTMLInputElement> = (
     e
@@ -25,6 +38,78 @@ const StepThree = () => {
   ) => {
     setIsChecked3(e.target.checked);
   };
+
+  useEffect(() => {
+    if (isChecked1 && !searchAddOn("Online service")) {
+      setInfo({
+        ...info,
+        addOns: [
+          ...info.addOns,
+          {
+            title: "Online service",
+            frequency: info.plan.frequency,
+            value: info.plan.frequency === "yearly" ? 10 : 1,
+          },
+        ],
+      });
+    } else if (!isChecked1 && searchAddOn("Online service")) {
+      const prevInfo = info;
+      setInfo({
+        ...info,
+        addOns: prevInfo.addOns.filter(
+          (item) => item.title !== "Online service"
+        ),
+      });
+    }
+  }, [isChecked1]);
+
+  useEffect(() => {
+    if (isChecked2 && !searchAddOn("Larger storage")) {
+      setInfo({
+        ...info,
+        addOns: [
+          ...info.addOns,
+          {
+            title: "Larger storage",
+            frequency: info.plan.frequency,
+            value: info.plan.frequency === "yearly" ? 20 : 2,
+          },
+        ],
+      });
+    } else if (!isChecked2 && searchAddOn("Larger storage")) {
+      const prevInfo = info;
+      setInfo({
+        ...info,
+        addOns: prevInfo.addOns.filter(
+          (item) => item.title !== "Larger storage"
+        ),
+      });
+    }
+  }, [isChecked2]);
+
+  useEffect(() => {
+    if (isChecked3 && !searchAddOn("Customizable profile")) {
+      setInfo({
+        ...info,
+        addOns: [
+          ...info.addOns,
+          {
+            title: "Customizable profile",
+            frequency: info.plan.frequency,
+            value: info.plan.frequency === "yearly" ? 20 : 2,
+          },
+        ],
+      });
+    } else if (!isChecked3 && searchAddOn("Customizable profile")) {
+      const prevInfo = info;
+      setInfo({
+        ...info,
+        addOns: prevInfo.addOns.filter(
+          (item) => item.title !== "Customizable profile"
+        ),
+      });
+    }
+  }, [isChecked3]);
 
   const formHandler = (): void => {
     // setInfo({
@@ -73,11 +158,11 @@ const StepThree = () => {
       </div>
 
       <main className="flex flex-col gap-4">
-        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
-              isChecked1
-                ? "border-blue-900 bg-blue-50"
-                : "border-gray-400"
-            }`}>
+        <button
+          className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+            isChecked1 ? "border-blue-900 bg-blue-50" : "border-gray-400"
+          }`}
+        >
           <div className="flex flex-row gap-2">
             <Checkbox
               id="1"
@@ -98,11 +183,11 @@ const StepThree = () => {
             {info.plan.frequency === "yearly" ? "+$10/yr" : "+$1/mo"}
           </h1>
         </button>
-        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
-              isChecked2
-                ? "border-blue-900 bg-blue-50"
-                : "border-gray-400"
-            }`}>
+        <button
+          className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+            isChecked2 ? "border-blue-900 bg-blue-50" : "border-gray-400"
+          }`}
+        >
           <div className="flex flex-row gap-2">
             <Checkbox
               id="2"
@@ -121,11 +206,11 @@ const StepThree = () => {
             {info.plan.frequency === "yearly" ? "+$20/yr" : "+$2/mo"}
           </h1>
         </button>
-        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
-              isChecked3
-                ? "border-blue-900 bg-blue-50"
-                : "border-gray-400"
-            }`}>
+        <button
+          className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+            isChecked3 ? "border-blue-900 bg-blue-50" : "border-gray-400"
+          }`}
+        >
           <div className="flex flex-row gap-2">
             <Checkbox
               id="3"

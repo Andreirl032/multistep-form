@@ -64,7 +64,8 @@ const StepTwo = () => {
   const formHandler = (): void => {
     // if (!formValidation()) return;
     // setInfo({ ...info, name: name, email: email, phone: phone });
-
+    const prevAddOns = info.addOns;
+    console.log(Array.isArray(prevAddOns));
     setInfo({
       ...info,
       plan: {
@@ -72,6 +73,32 @@ const StepTwo = () => {
         frequency: convertSwitchToFrequency(),
         value: convertTableToPrice(),
       },
+      addOns: prevAddOns.map((e, i) => {
+        const element = e;
+        element.frequency = convertSwitchToFrequency();
+        if (isSwitchOn === convertFrequencyToSwitch(e.frequency)) {
+          if (e.frequency === "yearly") {
+            if (e.title === "Online service") {
+              element.value = 10;
+            } else if (
+              e.title === "Larger storage" ||
+              e.title === "Customizable profile"
+            ) {
+              element.value = 20;
+            }
+          } else if (e.frequency === "monthly") {
+            if (e.title === "Online service") {
+              element.value = 1;
+            } else if (
+              e.title === "Larger storage" ||
+              e.title === "Customizable profile"
+            ) {
+              element.value = 2;
+            }
+          }
+        }
+        return e;
+      }),
     });
     setStep(3);
   };

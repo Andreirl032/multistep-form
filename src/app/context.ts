@@ -12,7 +12,7 @@ interface InfoInterface {
   email: string;
   phone: string;
   plan: { title: planName; frequency: string; value: number };
-  addOns: { title: string; frequency: string; value: number }[];
+  addOns: Array<{ title: string; frequency: string; value: number }>;
 }
 
 interface InfoContextInterface {
