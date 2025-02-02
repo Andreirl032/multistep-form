@@ -1,76 +1,169 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { InfoContext, StepContext } from "../context";
+import Checkbox from "./Checkbox";
 
 const StepThree = () => {
   const { step, setStep } = useContext(StepContext);
-    const { info, setInfo } = useContext(InfoContext);
+  const { info, setInfo } = useContext(InfoContext);
 
-    const goBackStep = (): void => {
-      if (step > 1) {
-        setStep(step - 1);
-      }
-    };
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
 
-    const formHandler = (): void => {
-      // if (!formValidation()) return;
-      // setInfo({ ...info, name: name, email: email, phone: phone });
-      setStep(4);
-    };
+  const handleCheckboxChange1: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    setIsChecked1(e.target.checked);
+  };
+  const handleCheckboxChange2: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    setIsChecked2(e.target.checked);
+  };
+  const handleCheckboxChange3: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    setIsChecked3(e.target.checked);
+  };
+
+  const formHandler = (): void => {
+    // setInfo({
+    //   ...info,
+    //   plan: {
+    //     title: selectedPlan,
+    //     frequency: convertSwitchToFrequency(),
+    //     value: convertTableToPrice(),
+    //   },
+    // });
+
+    setStep(4);
+  };
+
+  const goBackStep = (): void => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
+  // useEffect(() => {
+  //   setInfo({
+  //     ...info,
+  //     plan: { ...info.plan, title: selectedPlan, value: convertTableToPrice() },
+  //   });
+  // }, [selectedPlan]);
+
+  // useEffect(() => {
+  //   setInfo({
+  //     ...info,
+  //     plan: {
+  //       ...info.plan,
+  //       frequency: convertSwitchToFrequency(),
+  //       value: convertTableToPrice(),
+  //     },
+  //   });
+  // }, [isSwitchOn]);
 
   return (
     <div className="px-16 pt-10">
       <div className="flex mb-7 gap-1 flex-col">
-        <h1 className="text-3xl font-bold text-blue-950">
-          Personal PASSO 3 PARÇA
-        </h1>
+        <h1 className="text-3xl font-bold text-blue-950">Pick add-ons</h1>
         <h5 className="text-gray-500">
-          Please provide your name, e-mail address, and phone number.
+          Add-ons help enhance your gaming experience.
         </h5>
       </div>
 
-      <form action={() => formHandler()} className="flex gap-6 flex-col">
-        <div className="flex flex-col gap-1">
-          <label className="text-blue-950" htmlFor="name">
-            Name:
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="border-gray-300 border-solid border-2 outline-none rounded-md px-2 py-2 focus:border-blue-900"
-          />
-        </div>
+      <main className="flex flex-col gap-4">
+        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+              isChecked1
+                ? "border-blue-900 bg-blue-50"
+                : "border-gray-400"
+            }`}>
+          <div className="flex flex-row gap-2">
+            <Checkbox
+              id="1"
+              label=""
+              checked={isChecked1}
+              handleChange={handleCheckboxChange1}
+            />
+            <div className="flex flex-col gap-1 items-start">
+              <h1 className="text-md font-medium text-blue-950">
+                Online service
+              </h1>
+              <h2 className="text-sm text-gray-500">
+                Access to multiplayer games
+              </h2>
+            </div>
+          </div>
+          <h1 className="text-[#7C76CA]">
+            {info.plan.frequency === "yearly" ? "+$10/yr" : "+$1/mo"}
+          </h1>
+        </button>
+        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+              isChecked2
+                ? "border-blue-900 bg-blue-50"
+                : "border-gray-400"
+            }`}>
+          <div className="flex flex-row gap-2">
+            <Checkbox
+              id="2"
+              label=""
+              checked={isChecked2}
+              handleChange={handleCheckboxChange2}
+            />
+            <div className="flex flex-col gap-1 items-start">
+              <h1 className="text-md font-medium text-blue-950">
+                Larger storage
+              </h1>
+              <h2 className="text-sm text-gray-500">Extra 1TB of cloud save</h2>
+            </div>
+          </div>
+          <h1 className="text-[#7C76CA]">
+            {info.plan.frequency === "yearly" ? "+$20/yr" : "+$2/mo"}
+          </h1>
+        </button>
+        <button className={`flex flex-row justify-between items-center rounded-lg border-solid border-2 gap-24 py-4 px-6 ${
+              isChecked3
+                ? "border-blue-900 bg-blue-50"
+                : "border-gray-400"
+            }`}>
+          <div className="flex flex-row gap-2">
+            <Checkbox
+              id="3"
+              label=""
+              checked={isChecked3}
+              handleChange={handleCheckboxChange3}
+            />
+            <div className="flex flex-col gap-1 items-start">
+              <h1 className="text-md font-medium text-blue-950">
+                Customizable profile
+              </h1>
+              <h2 className="text-sm text-gray-500">
+                Custom theme on your profile
+              </h2>
+            </div>
+          </div>
+          <h1 className="text-[#7C76CA]">
+            {info.plan.frequency === "yearly" ? "+$20/yr" : "+$2/mo"}
+          </h1>
+        </button>
+      </main>
 
-        <div className="flex flex-col gap-1">
-          <label className="text-blue-950" htmlFor="email">
-            E-mail address:
-          </label>
-          <input
-            type="email"
-            name="email"
-            className="border-gray-300 border-solid border-2 outline-none rounded-md px-2 py-2 focus:border-blue-900"
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label className="text-blue-950" htmlFor="phone-number">
-            Phone number:
-          </label>
-          <input
-            type="tel"
-            name="phone-number"
-            className="border-gray-300 border-solid border-2 outline-none rounded-md px-2 py-2 focus:border-blue-900"
-          />
-        </div>
-        <div className="flex flex-row justify-between">
-        <button onClick={()=>goBackStep()} type="button" className="mt-auto whitespace-nowrap inline bg-transparent text-gray-500 rounded-lg w-min py-3 hover:text-blue-950">Go Back</button>
+      <div className="flex flex-row justify-between mt-20">
         <button
+          onClick={() => goBackStep()}
+          type="button"
+          className="mt-auto whitespace-nowrap inline bg-transparent text-gray-500 rounded-lg w-min py-3 hover:text-blue-950"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={() => formHandler()}
           type="button"
           className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
         >
           Next Step
         </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

@@ -27,11 +27,6 @@ const StepTwo = () => {
     convertFrequencyToSwitch(info.plan.frequency)
   );
 
-  const priceTable = {
-    monthly: { arcade: 9, advanced: 12, pro: 15 },
-    yearly: { arcade: 90, advanced: 120, pro: 150 },
-  };
-
   const handleSwitchState = (e: ChangeEvent<HTMLInputElement>) => {
     const newState = e.target.checked;
     setIsSwitchOn(newState);
@@ -120,42 +115,48 @@ const StepTwo = () => {
             onClick={() => setSelectedPlan("arcade")}
             className={`flex flex-col justify-between items-start rounded-lg border-blue-900 border-solid border-2 gap-12 w-[8rem] pl-4 pr-10 py-3 ${
               selectedPlan === "arcade"
-                ? "border-blue-900 bg-blue-100"
+                ? "border-blue-900 bg-blue-50"
                 : "border-gray-400"
             }`}
           >
             <Image priority src={iconArcade} alt="iconArcade" />
             <div>
               <h1 className="text-md font-medium text-blue-950">Arcade</h1>
-              <h2 className="text-sm text-gray-500">$9/mo</h2>
+              <h2 className="text-sm text-gray-500">
+                {isSwitchOn ? "$90/yr" : "$9/mo"}
+              </h2>
             </div>
           </button>
           <button
             onClick={() => setSelectedPlan("advanced")}
             className={`flex flex-col justify-between items-start rounded-lg border-solid border-2 gap-12 w-[8rem] pl-4 pr-10 py-3 ${
               selectedPlan === "advanced"
-                ? "border-blue-900 bg-blue-100"
+                ? "border-blue-900 bg-blue-50"
                 : "border-gray-400"
             }`}
           >
             <Image priority src={iconAdvanced} alt="iconAdvanced" />
             <div>
               <h1 className="text-md font-medium text-blue-950">Advanced</h1>
-              <h2 className="text-sm text-gray-500">$12/mo</h2>
+              <h2 className="text-sm text-gray-500">
+                {isSwitchOn ? "$120/yr" : "$12/mo"}
+              </h2>
             </div>
           </button>
           <button
             onClick={() => setSelectedPlan("pro")}
             className={`flex flex-col justify-between items-start rounded-lg border-blue-900 border-solid border-2 gap-12 w-[8rem] pl-4 pr-10 py-3 ${
               selectedPlan === "pro"
-                ? "border-blue-900 bg-blue-100"
+                ? "border-blue-900 bg-blue-50"
                 : "border-gray-400"
             }`}
           >
             <Image priority src={iconPro} alt="iconPro" />
             <div>
               <h1 className="text-md font-medium text-blue-950">Pro</h1>
-              <h2 className="text-sm text-gray-500">$15/mo</h2>
+              <h2 className="text-sm text-gray-500">
+                {isSwitchOn ? "$150/yr" : "$15/mo"}
+              </h2>
             </div>
           </button>
         </div>

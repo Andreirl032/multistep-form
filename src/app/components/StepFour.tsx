@@ -3,13 +3,19 @@ import { InfoContext, StepContext } from "../context";
 
 const StepFour = () => {
   const { step, setStep } = useContext(StepContext);
-    const { info, setInfo } = useContext(InfoContext);
+  const { info, setInfo } = useContext(InfoContext);
 
-    const formHandler = (): void => {
-      // if (!formValidation()) return;
-      // setInfo({ ...info, name: name, email: email, phone: phone });
-      setStep(5);
-    };
+  const formHandler = (): void => {
+    // if (!formValidation()) return;
+    // setInfo({ ...info, name: name, email: email, phone: phone });
+    setStep(5);
+  };
+
+  const goBackStep = (): void => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
 
   return (
     <div className="px-16 pt-10">
@@ -56,12 +62,22 @@ const StepFour = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
-        >
-          Next Step
-        </button>
+        <div className="flex flex-row justify-between mt-20">
+          <button
+            onClick={() => goBackStep()}
+            type="button"
+            className="mt-auto whitespace-nowrap inline bg-transparent text-gray-500 rounded-lg w-min py-3 hover:text-blue-950"
+          >
+            Go Back
+          </button>
+          <button
+            onClick={() => formHandler()}
+            type="button"
+            className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
+          >
+            Next Step
+          </button>
+        </div>
       </form>
     </div>
   );
