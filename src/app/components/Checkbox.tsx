@@ -33,7 +33,7 @@ const Checkbox: React.FC<PropsType> = ({
         {label}
       </label>
       {checked && (
-        <span className="pointer-events-none absolute left-[7.5px] top-[9px] rotate-[40deg] scale-x-[-1] transform text-lg font-bold text-white">
+        <span className="pointer-events-none absolute left-[25%] top-[20%] rotate-[40deg] scale-x-[-1] transform text-lg font-bold text-white">
           L
         </span>
       )}
