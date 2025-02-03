@@ -17,7 +17,7 @@ export async function GET(request: any) {
     if (checkRegister) {
       return NextResponse.json(checkRegister);
     }
-    return NextResponse.json({ success: false, message: "email não existe" });
+    return NextResponse.json({ success: false, message: "E-mail não cadastrado" });
   } catch (err: any) {
     return NextResponse.json({ error: err.message });
   }

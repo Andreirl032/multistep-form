@@ -11,7 +11,7 @@ export default function Start() {
   const [emailError, setEmailError] = useState("");
 
   const getInfo = async () => {
-    let data = await fetch("/api/registers", {
+    let data: any = await fetch("/api/registers", {
       cache: "no-store",
       method: "GET",
       headers: {
@@ -19,8 +19,14 @@ export default function Start() {
       },
     });
     data = await data.json();
-    // console.log(data);
+    if (data.success === false) {
+      if (data.message) {
+        setEmailError(data.message);
+      }
+      return;
+    }
     await sessionStorage.setItem("register", JSON.stringify(data));
+    router.push("/form");
   };
 
   const formHandler = async (): Promise<void> => {
@@ -28,7 +34,6 @@ export default function Start() {
       return;
     }
     await getInfo();
-    router.push("/form");
     //console.warn("pass");
   };
 
@@ -48,13 +53,13 @@ export default function Start() {
 
   return (
     <div className="bg-slate-200 size-full absolute flex justify-center items-center">
-      <div className="bg-slate-50 rounded-md p-16 w-[55rem] h-[37rem] flex flex-col gap-20">
-        <Link
-          className="absolute top-6 right-8 w-16 h-16"
-          href={"https://github.com/Andreirl032/multistep-form"}
-        >
-          <Image priority src={githubLogo} alt="github" />
-        </Link>
+      <Link
+        className="absolute top-6 right-8 w-16 h-16"
+        href={"https://github.com/Andreirl032/multistep-form"}
+      >
+        <Image priority src={githubLogo} alt="github" />
+      </Link>
+      <div className="bg-slate-50 rounded-md p-16 w-[55rem] h-[37rem] flex flex-col gap-20 absolute">
         <div className="flex flex-col items-center">
           <h1 className="text-6xl text-blue-900 font-bold">Tech service</h1>
           <h2 className="text-xl text-gray-700 font-medium">
@@ -68,9 +73,6 @@ export default function Start() {
               <label className="text-blue-950" htmlFor="email">
                 Insert your e-mail to update your information:
               </label>
-              <label className="text-red-600 font-bold" htmlFor="email">
-                {emailError}
-              </label>
             </div>
             <input
               type="email"
@@ -83,6 +85,9 @@ export default function Start() {
               }}
               value={email}
             />
+            <label className="text-red-600 font-bold" htmlFor="email">
+              {emailError}
+            </label>
           </div>
           <div>
             <button
@@ -95,7 +100,7 @@ export default function Start() {
           </div>
         </form>
 
-        <div>
+        <div className="absolute bottom-20 left-20">
           <h1 className="text-xl">
             Doesn´t have infomation registered?{" "}
             {
