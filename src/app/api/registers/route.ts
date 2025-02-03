@@ -6,7 +6,7 @@ export async function GET(request: any) {
   const email = await request.headers.get("email");
   if (!email) {
     return NextResponse.json(
-      { success: false, message: "E-mail é obrigatório" },
+      { success: false, message: "E-mail não recebido para consulta" },
       { status: 400 }
     );
   }
