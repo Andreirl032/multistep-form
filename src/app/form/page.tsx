@@ -26,23 +26,6 @@ export default function Home() {
     plan: { title: "", frequency: "", value: 0 },
     addOns: [],
   });
-  const [register,setRegister] = useState<any>();
-
-  const fetchRegister = async () => {
-    const res = await fetch("/api/registers");
-    const registers = await res.json();
-    return registers;
-  }
-
-  useEffect(()=>{
-    fetchRegister().then((register)=>{
-      setRegister(register);
-    })
-  },[])
-
-  // useEffect(()=>{
-  //   console.log(register);
-  // },[])
 
   const pageHandler = (step: number) => {
     switch (step) {

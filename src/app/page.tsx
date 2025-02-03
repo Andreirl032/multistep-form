@@ -13,12 +13,12 @@ export default function Start() {
       cache: "no-store",
       method: "GET",
       headers: {
-        email: email
+        email: email,
       },
     });
     data = await data.json();
-    console.log(data);
-    
+    // console.log(data);
+    sessionStorage.setItem("register", JSON.stringify(data));
   };
 
   const formHandler = (): void => {
@@ -26,6 +26,7 @@ export default function Start() {
       return;
     }
     getInfo();
+    router.push("/form");
     //console.warn("pass");
   };
 

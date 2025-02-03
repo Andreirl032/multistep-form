@@ -43,6 +43,20 @@ const StepOne = () => {
     setName(info?.name);
     setEmail(info?.email);
     setPhone(info?.phone);
+  }, [info]);
+
+  const getRegister = () => {
+    const storedData = sessionStorage.getItem("register");
+    return storedData ? JSON.parse(storedData) : null;
+  };
+
+  useEffect(() => {
+    const register = getRegister();
+    // console.log(register);
+    if (register) {
+      setInfo(register);
+      sessionStorage.removeItem("register");
+    }
   }, []);
 
   return (
