@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import githubLogo from "../../images/github-mark.svg";
+import Image from "next/image";
 
 export default function Start() {
   const router = useRouter();
@@ -47,6 +49,12 @@ export default function Start() {
   return (
     <div className="bg-slate-200 size-full absolute flex justify-center items-center">
       <div className="bg-slate-50 rounded-md p-16 w-[55rem] h-[37rem] flex flex-col gap-20">
+        <Link
+          className="absolute top-6 right-   w-16 h-16"
+          href={"https://github.com/Andreirl032/multistep-form"}
+        >
+          <Image priority src={githubLogo} alt="github" />
+        </Link>
         <div className="flex flex-col items-center">
           <h1 className="text-6xl text-blue-900 font-bold">Tech service</h1>
           <h2 className="text-xl text-gray-700 font-medium">
