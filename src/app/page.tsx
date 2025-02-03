@@ -50,7 +50,7 @@ export default function Start() {
     <div className="bg-slate-200 size-full absolute flex justify-center items-center">
       <div className="bg-slate-50 rounded-md p-16 w-[55rem] h-[37rem] flex flex-col gap-20">
         <Link
-          className="absolute top-6 right-   w-16 h-16"
+          className="absolute top-6 right-8 w-16 h-16"
           href={"https://github.com/Andreirl032/multistep-form"}
         >
           <Image priority src={githubLogo} alt="github" />
