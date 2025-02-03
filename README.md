@@ -1,7 +1,23 @@
 
 Projeto de formulário com múltiplos passos. Utiliza tecnologias como Next.js, Tailwind CSS, e Typescript. Com o uso de APIs, registra (e consulta) as informações do formulário em um banco de dados MongoDB multinuvem (MongoDB Atlas) e gerencia o backend mediante a biblioteca Mongoose.
 
+Tela inicial
 ![start](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/start.png?raw=true)
+
+Passo 1
+![step1](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/step1.png?raw=true)
+
+Passo 2
+![step2](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/step2.png?raw=true)
+
+Passo 3
+![step3](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/step3.png?raw=true)
+
+Passo 4
+![step4](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/step4.png?raw=true)
+
+Tela de agradecimento
+![end](https://github.com/Andreirl032/multistep-form/blob/master/screenshots/end.png?raw=true)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
