@@ -18,14 +18,14 @@ export default function Start() {
     });
     data = await data.json();
     // console.log(data);
-    sessionStorage.setItem("register", JSON.stringify(data));
+    await sessionStorage.setItem("register", JSON.stringify(data));
   };
 
-  const formHandler = (): void => {
+  const formHandler = async (): Promise<void> => {
     if (!formValidation()) {
       return;
     }
-    getInfo();
+    await getInfo();
     router.push("/form");
     //console.warn("pass");
   };
