@@ -1,3 +1,6 @@
+
+Projeto de formulário com múltiplos passos. Utiliza tecnologias como Next.js, Tailwind CSS, e Typescript. Com o uso de APIs, registra (e consulta) as informações do formulário em um banco de dados MongoDB remoto (MongoDB Atlas) e gerencia o backend mediante a biblioteca Mongoose.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
