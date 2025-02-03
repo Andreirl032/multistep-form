@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { InfoContext, StepContext } from "../context";
 import Image from "next/image";
-import iconThankYou from "../../../assets/images/icon-thank-you.svg";
+import iconThankYou from "../../../images/icon-thank-you.svg";
 import Link from "next/link";
 
 const StepFive = () => {

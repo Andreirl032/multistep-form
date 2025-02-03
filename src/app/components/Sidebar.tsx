@@ -1,5 +1,5 @@
 import Image from "next/image";
-import sidebar from "../../../assets/images/bg-sidebar-desktop.svg";
+import sidebar from "../../../images/bg-sidebar-desktop.svg";
 import { useContext } from "react";
 import { StepContext } from "../context";
 

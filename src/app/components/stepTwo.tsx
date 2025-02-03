@@ -1,9 +1,9 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { InfoContext, StepContext } from "../context";
 import Image from "next/image";
-import iconAdvanced from "../../../assets/images/icon-advanced.svg";
-import iconArcade from "../../../assets/images/icon-arcade.svg";
-import iconPro from "../../../assets/images/icon-pro.svg";
+import iconAdvanced from "../../../images/icon-advanced.svg";
+import iconArcade from "../../../images/icon-arcade.svg";
+import iconPro from "../../../images/icon-pro.svg";
 import ToggleSwitch from "./ToggleSwitch";
 
 type planName = "" | "arcade" | "advanced" | "pro";

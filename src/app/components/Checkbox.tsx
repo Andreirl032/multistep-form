@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import iconCheckmark from "../../../assets/images/icon-checkmark.svg";
+import iconCheckmark from "../../../images/icon-checkmark.svg";
 
 interface PropsType {
   checked: boolean;
