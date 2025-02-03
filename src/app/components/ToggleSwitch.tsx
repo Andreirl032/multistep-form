@@ -13,7 +13,7 @@ const ToggleSwitch: FC<ToggleSwitchProps> = ({
       className="relative inline-block h-[22px] w-11 cursor-pointer"
       aria-label="Toggle Switch"
     >
-      <div className="absolute right-0 top-0 flex h-full w-full rounded-3xl border border-[#E5E5E5] bg-white transition-all duration-300 ease-out has-[:checked]:bg-[#a00c92]">
+      <div className="absolute right-0 top-0 flex h-full w-full rounded-3xl border border-[#E5E5E5] bg-white transition-all duration-300 ease-out has-[:checked]:bg-[#03285A]">
         <input
           type="checkbox"
           className="peer h-0 w-0 opacity-0"
