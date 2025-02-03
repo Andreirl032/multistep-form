@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { InfoContext, StepContext } from "../context";
 import Image from "next/image";
 import iconThankYou from "../../../assets/images/icon-thank-you.svg";
+import Link from "next/link";
 
 const StepFive = () => {
   const { step, setStep } = useContext(StepContext);
@@ -29,6 +30,12 @@ const StepFive = () => {
           our platform. If you ever need support, please feel free to email us
           at support@loremgaming.com
         </h2>
+        <Link
+          href={"/"}
+          className="whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-4 hover:bg-blue-950 text-sm"
+        >
+          Return to home page
+        </Link>
       </div>
     </div>
   );
