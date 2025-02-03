@@ -8,10 +8,24 @@ export default function Start() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
+  const getInfo = async () => {
+    let data = await fetch("/api/registers", {
+      cache: "no-store",
+      method: "GET",
+      headers: {
+        email: email
+      },
+    });
+    data = await data.json();
+    console.log(data);
+    
+  };
+
   const formHandler = (): void => {
     if (!formValidation()) {
       return;
     }
+    getInfo();
     //console.warn("pass");
   };
 
@@ -67,7 +81,7 @@ export default function Start() {
               type="button"
               className="ml-auto mt-auto whitespace-nowrap inline bg-blue-900 text-white rounded-lg w-min py-3 px-5 hover:bg-blue-950"
             >
-              Next Step
+              Search
             </button>
           </div>
         </form>
