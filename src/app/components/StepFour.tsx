@@ -5,9 +5,27 @@ const StepFour = () => {
   const { step, setStep } = useContext(StepContext);
   const { info, setInfo } = useContext(InfoContext);
 
+  const postInfo = async () => {
+    let test = await fetch("/api/postRegister", {
+      cache: "no-store",
+      method: "POST",
+      headers: undefined,
+      body: JSON.stringify({
+        name: info.name,
+        email: info.email,
+        phone: info.phone,
+        plan: info.plan,
+        addOns: info.addOns,
+      }),
+    });
+    test = await test.json();
+    // console.log(test);
+  };
+
   const formHandler = (): void => {
     // if (!formValidation()) return;
     // setInfo({ ...info, name: name, email: email, phone: phone });
+    postInfo();
     setStep(5);
   };
 
